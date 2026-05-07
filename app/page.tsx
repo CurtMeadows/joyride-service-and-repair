@@ -20,6 +20,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { brandAssets, businessInfo, getHomePageStructuredData, siteConfig } from "@/lib/site";
+import { HeaderNav } from "@/components/header-nav";
 
 const offerings: { title: string; icon: LucideIcon }[] = [
   { title: "Yearly maintenance", icon: Cog },
@@ -94,34 +95,7 @@ export default function Home() {
       <div aria-hidden className="chassis-noise pointer-events-none absolute inset-0" />
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-6 sm:px-8 lg:gap-24 lg:px-12 lg:py-10">
-        <header className="machine-panel px-5 py-4 sm:px-6">
-          <div className="relative z-10 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-            <a className="flex items-center" href="#top" aria-label={siteConfig.name}>
-              <Image
-                src={brandAssets.logo}
-                alt={siteConfig.name}
-                width={1536}
-                height={1024}
-                priority
-                className="h-auto w-[150px] sm:w-[180px] lg:w-[200px]"
-              />
-            </a>
-
-            <div className="flex flex-col gap-3 lg:items-end">
-              <nav className="flex flex-wrap items-center gap-1 text-sm font-medium text-[var(--muted-foreground)] lg:justify-end">
-                <a className="rounded-full px-3 py-2 hover:text-foreground" href="#services">
-                  Services
-                </a>
-                <a className="rounded-full px-3 py-2 hover:text-foreground" href="#coverage">
-                  Pickup &amp; delivery
-                </a>
-                <a className="rounded-full px-3 py-2 hover:text-foreground" href="#contact">
-                  Contact
-                </a>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <HeaderNav />
 
         <section>
           <div className="machine-panel lift-hover px-6 py-8 sm:px-8 sm:py-10">

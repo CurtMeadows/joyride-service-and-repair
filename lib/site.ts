@@ -37,7 +37,7 @@ export const siteConfig = {
   titleTemplate: "%s | Joyride Sport Machines",
   description:
     "Service, repair, and upgrades for recreational and sport vehicles in Florence, Coolidge, and San Tan Valley.",
-  url: "https://www.joyrideazsports.com",
+  url: "https://www.joyridesportmachines.com",
   locale: "en_US",
   language: "en-US",
   category: "Automotive",
@@ -235,7 +235,7 @@ export function getHomePageStructuredData() {
         primaryImageOfPage: absoluteUrl(seoAssets.primaryImage),
       },
       {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "AutoRepair"],
         "@id": businessId,
         name: siteConfig.name,
         url: siteUrl,
@@ -247,6 +247,7 @@ export function getHomePageStructuredData() {
         ],
         telephone: businessInfo.phoneInternational,
         email: businessInfo.email,
+        priceRange: "$$",
         address: {
           "@type": "PostalAddress",
           streetAddress: businessInfo.address.streetAddress,
@@ -255,6 +256,30 @@ export function getHomePageStructuredData() {
           postalCode: businessInfo.address.postalCode,
           addressCountry: businessInfo.address.addressCountry,
         },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 32.9749,
+          longitude: -111.5214,
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "08:00",
+            closes: "17:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Saturday"],
+            opens: "09:00",
+            closes: "14:00",
+          },
+        ],
+        sameAs: [
+          // Add your Google Business Profile URL here once claimed:
+          // "https://maps.app.goo.gl/YOUR_LISTING_ID",
+          // Add Facebook, Instagram, etc. as you create them
+        ],
         areaServed: businessInfo.serviceAreas,
         contactPoint: [
           {
