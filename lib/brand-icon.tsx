@@ -45,6 +45,8 @@ export function BrandIcon({ logoDataUrl, innerPadding = "12%" }: BrandIconProps)
         <img
           src={logoDataUrl}
           alt=""
+          width={1536}
+          height={1024}
           style={{
             width: "100%",
             height: "auto",

@@ -145,9 +145,10 @@ export default function Home() {
                     <Image
                       src={featuredImages[2].src}
                       alt={featuredImages[2].alt}
-                      fill
+                      width={1400}
+                      height={787}
                       sizes="(min-width: 1024px) 896px, 100vw"
-                      className="object-cover"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-black/70 to-transparent px-4 py-4">
@@ -251,9 +252,10 @@ export default function Home() {
                   <Image
                     src={featuredImages[1].src}
                     alt={featuredImages[1].alt}
-                    fill
+                    width={1400}
+                    height={1391}
                     sizes="(min-width: 1024px) 420px, 100vw"
-                    className="object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="border-t border-white/10 bg-black/15 px-4 py-3">
@@ -323,9 +325,10 @@ export default function Home() {
                 <Image
                   src={featuredImages[0].src}
                   alt={featuredImages[0].alt}
-                  fill
+                  width={1400}
+                  height={787}
                   sizes="(min-width: 1024px) 1152px, 100vw"
-                  className="object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-4">

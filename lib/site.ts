@@ -208,6 +208,72 @@ export function getHomePageStructuredData() {
   const businessId = `${siteUrl}/#localbusiness`;
   const websiteId = `${siteUrl}/#website`;
   const webpageId = `${siteUrl}/#webpage`;
+  const localBusiness = {
+    "@type": "LocalBusiness",
+    "@id": businessId,
+    name: siteConfig.name,
+    url: siteUrl,
+    description: siteConfig.description,
+    image: [
+      absoluteUrl(seoAssets.primaryImage),
+      absoluteUrl("/images/utv-cfmoto-zforce.jpg"),
+      absoluteUrl("/images/golf-cart-fairway.jpg"),
+    ],
+    telephone: businessInfo.phoneInternational,
+    email: businessInfo.email,
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: businessInfo.address.streetAddress,
+      addressLocality: businessInfo.address.addressLocality,
+      addressRegion: businessInfo.address.addressRegion,
+      postalCode: businessInfo.address.postalCode,
+      addressCountry: businessInfo.address.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 32.9749,
+      longitude: -111.5214,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "09:00",
+        closes: "14:00",
+      },
+    ],
+    sameAs: [
+      // Add your Google Business Profile URL here once claimed:
+      // "https://maps.app.goo.gl/YOUR_LISTING_ID",
+      // Add Facebook, Instagram, etc. as you create them
+    ],
+    areaServed: businessInfo.serviceAreas,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: businessInfo.phoneInternational,
+        email: businessInfo.email,
+        areaServed: businessInfo.serviceAreas,
+        availableLanguage: ["English"],
+      },
+    ],
+    knowsAbout: [...supportedVehicleTypes],
+    makesOffer: serviceOfferings.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service,
+      },
+    })),
+  };
 
   return {
     "@context": "https://schema.org",
@@ -234,71 +300,15 @@ export function getHomePageStructuredData() {
         },
         primaryImageOfPage: absoluteUrl(seoAssets.primaryImage),
       },
+      localBusiness,
       {
-        "@type": ["LocalBusiness", "AutoRepair"],
-        "@id": businessId,
+        "@type": "AutoRepair",
+        "@id": `${siteUrl}/#autorepair`,
+        isPartOf: {
+          "@id": businessId,
+        },
         name: siteConfig.name,
         url: siteUrl,
-        description: siteConfig.description,
-        image: [
-          absoluteUrl(seoAssets.primaryImage),
-          absoluteUrl("/images/utv-cfmoto-zforce.jpg"),
-          absoluteUrl("/images/golf-cart-fairway.jpg"),
-        ],
-        telephone: businessInfo.phoneInternational,
-        email: businessInfo.email,
-        priceRange: "$$",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: businessInfo.address.streetAddress,
-          addressLocality: businessInfo.address.addressLocality,
-          addressRegion: businessInfo.address.addressRegion,
-          postalCode: businessInfo.address.postalCode,
-          addressCountry: businessInfo.address.addressCountry,
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 32.9749,
-          longitude: -111.5214,
-        },
-        openingHoursSpecification: [
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            opens: "08:00",
-            closes: "17:00",
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Saturday"],
-            opens: "09:00",
-            closes: "14:00",
-          },
-        ],
-        sameAs: [
-          // Add your Google Business Profile URL here once claimed:
-          // "https://maps.app.goo.gl/YOUR_LISTING_ID",
-          // Add Facebook, Instagram, etc. as you create them
-        ],
-        areaServed: businessInfo.serviceAreas,
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            contactType: "customer service",
-            telephone: businessInfo.phoneInternational,
-            email: businessInfo.email,
-            areaServed: businessInfo.serviceAreas,
-            availableLanguage: ["English"],
-          },
-        ],
-        knowsAbout: [...supportedVehicleTypes],
-        makesOffer: serviceOfferings.map((service) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: service,
-          },
-        })),
       },
     ],
   };
